@@ -1,0 +1,13 @@
+.custom-button {
+    color: black; 
+    float: right; 
+    border: 2px solid black;
+  }
+
+  .table-bordered {
+    border: 2px solid black;
+  }
+  
+  .table thead th {
+    background-color: #ccc; 
+  }

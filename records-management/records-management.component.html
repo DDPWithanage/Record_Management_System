@@ -1,0 +1,56 @@
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md">
+            <form #recordForm="ngForm" (ngSubmit)="submitForm(recordForm)">
+                <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="formData.name" required>
+                </div>
+                <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formData.email" required>
+                </div>
+                <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="tel" class="form-control" id="phone" name= "phone" [(ngModel)]="formData.phone" pattern="[0-9]*" maxlength="10" required>
+                </div>
+                <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="number" step="0.01" class="form-control" id="amount" name="amount" [(ngModel)]="formData.amount" (input)="validateAmount($event)" pattern="[0-9]*" required>
+                </div>
+                <button type="submit" class="btn btn-secondary custom-button">Submit</button>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let record of records; let i = index">
+                    <td>{{ record.name }}</td>
+                    <td>{{ record.email }}</td>
+                    <td>{{ record.phone }}</td>
+                    <td>{{ record.amount }}.00</td>
+                    <td><button class="btn btn-danger" (click)="deleteRecord(i)">Delete</button></td>
+                </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                      <th class="text-right" colspan="3">TotalAmount</th>
+                      <th>{{ totalAmount }}.00</th>
+                      <th></th>
+                    </tr>
+                  </tfoot>
+            </table>
+        </div>
+</div>
+  
